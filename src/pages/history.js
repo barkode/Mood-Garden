@@ -1,10 +1,10 @@
-import { moodStorage } from '../storage.js';
+import { MoodStorage } from '../storage.js';
 
 const FLOWERS = { happy:'🌻', calm:'🌸', sad:'🥀', angry:'🌹', anxious:'🌾' };
 
 export function renderHistory() {
-    const logs = moodStorage.getHistory();
-
+    const logs = MoodStorage.getHistory();
+    console.log(logs);
     const items = logs.map(e => `
         <div class="flex items-center gap-4 rounded-2xl bg-white/10 px-4 py-3 hover:bg-white/15 transition">
             <span class="text-3xl">${FLOWERS[e.mood] || '🌱'}</span>
@@ -13,7 +13,7 @@ export function renderHistory() {
                 <p class="text-xs text-white/50">${e.date} · "${e.note}"</p>
             </div>
         </div>
-    `).join('') || '<p class="text-white/40 text-sm">Записів ще немає.</p>';
+    `).join('') || '<p class="text-white/40 text-sm">There are no entries yet.</p>';
 
     document.getElementById('page-history').innerHTML = `
         <div>
