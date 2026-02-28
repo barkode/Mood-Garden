@@ -20,10 +20,10 @@ export function showTeamModal() {
                 </div>
 
                 <div class="team-member">
-                    <h3>Aishieee</h3>
+                    <h3>Aisha</h3>
                     <div class="social-links">
                         <a href="https://github.com/Aishieee" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/aishasheikh2k1/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@ export function showTeamModal() {
                     <h3>akashebaev-ux</h3>
                     <div class="social-links">
                         <a href="https://github.com/akashebaev-ux" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/azamat-kashebayev/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
