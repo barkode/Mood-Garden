@@ -13,37 +13,33 @@ export function showTeamModal() {
 
                 <div class="team-member">
                     <h3>Colm Woods</h3>
-                    <p>How To Use & Team Pages</p>
                     <div class="social-links">
                         <a href="https://github.com/colmwoods" target="_blank">GitHub</a>
-                        <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
+                        <a href="https://linkedin.com/in/colm-woods" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
                 <div class="team-member">
                     <h3>Aishieee</h3>
-                    <p>Home & Global Styling</p>
                     <div class="social-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Aishieee" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
                 <div class="team-member">
                     <h3>akashebaev-ux</h3>
-                    <p>Mood Logging</p>
                     <div class="social-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/akashebaev-ux" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
                 <div class="team-member">
                     <h3>barkode</h3>
-                    <p>Storage System</p>
                     <div class="social-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/barkode" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
@@ -51,8 +47,8 @@ export function showTeamModal() {
                     <h3>11florin</h3>
                     <p>Garden Rendering</p>
                     <div class="social-links">
-                        <a href="#" target="_blank">GitHub</a>
-                        <a href="#" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/11florin" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/florin-albu-0750b6238/" target="_blank">LinkedIn</a>
                     </div>
                 </div>
 
