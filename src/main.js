@@ -3,13 +3,13 @@ import './styles/main.css';
 import { renderAnalytics } from './pages/analytics.js';
 import { renderGarden } from './pages/garden.js';
 
-import { showHowToUseModal } from './pages/howtouse.js';
-import { showTeamModal } from './pages/team.js';
+import { renderTeam } from "./pages/team.js"
 
 const routes = {
-  '/garden': renderGarden,
-  '/analytics': renderAnalytics,
-};
+    '/garden': renderGarden,
+    '/analytics': renderAnalytics,
+    '/team': renderTeam
+}
 
 function router() {
   const path = location.hash.replace('#', '');
