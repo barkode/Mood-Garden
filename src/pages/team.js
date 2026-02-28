@@ -59,7 +59,7 @@ export function showTeamModal() {
                             <a href="https://github.com/barkode" target="_blank" rel="noopener noreferrer" aria-label="barkode GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="barkode LinkedIn">
+                            <a href="https://www.linkedin.com/in/kostiantyn-krysenko/" target="_blank" rel="noopener noreferrer" aria-label="barkode LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
