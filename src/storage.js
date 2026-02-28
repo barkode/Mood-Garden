@@ -73,7 +73,7 @@ const io = {
 /**
  * Public API
  */
-export const MoodStorage = {
+export const moodStorage = {
     // Cache data in memory for fast access
     _state: null,
 
@@ -176,3 +176,12 @@ export const MoodStorage = {
         }
     }
 };
+
+export const init = () => moodStorage.init();
+export const getSettings = () => moodStorage.getSettings();
+export const updateSettings = (patch) => moodStorage.updateSettings(patch);
+export const saveEntry = (entry) => moodStorage.saveEntry(entry);
+export const getEntryByDate = (date) => moodStorage.getEntryByDate(date);
+export const getHistory = () => moodStorage.getHistory();
+export const deleteEntry = (date) => moodStorage.deleteEntry(date);
+export const clearAll = () => moodStorage.clearAll();
