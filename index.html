@@ -512,326 +512,326 @@ focus:ring-white/20 resize-none"></textarea>
         </div>
     </div>
 </div>
+<script type="module" src="./src/main.js"></script>
+<script type="module" src="./src/scripts/scripts.js"></script>
+<!-- <script> -->
+<!--     const sidebar = document.getElementById('sidebar'); -->
 
-<script>
-    const sidebar = document.getElementById('sidebar');
+<!--     function openSidebar() { -->
+<!--         sidebar.classList.remove('hidden'); -->
+<!--         sidebar.classList.add('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90'); -->
+<!--     } -->
 
-    function openSidebar() {
-        sidebar.classList.remove('hidden');
-        sidebar.classList.add('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90');
-    }
+<!--     function closeSidebar() { -->
+<!--         const isLg = window.innerWidth >= 1024; -->
+<!--         if (!isLg) { -->
+<!--             sidebar.classList.add('hidden'); -->
+<!--             sidebar.classList.remove('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90'); -->
+<!--         } -->
+<!--     } -->
 
-    function closeSidebar() {
-        const isLg = window.innerWidth >= 1024;
-        if (!isLg) {
-            sidebar.classList.add('hidden');
-            sidebar.classList.remove('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90');
-        }
-    }
+<!--     document.getElementById('mobile-open-btn').addEventListener('click', openSidebar); -->
+<!--     document.getElementById('mobile-open-btn2').addEventListener('click', openSidebar); -->
+<!--     document.getElementById('sidebar-close-btn').addEventListener('click', closeSidebar); -->
 
-    document.getElementById('mobile-open-btn').addEventListener('click', openSidebar);
-    document.getElementById('mobile-open-btn2').addEventListener('click', openSidebar);
-    document.getElementById('sidebar-close-btn').addEventListener('click', closeSidebar);
+<!--     function navigateTo(pageId) { -->
+<!--         document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); -->
+<!--         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active')); -->
 
-    function navigateTo(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+<!--         const page = document.getElementById('page-' + pageId); -->
 
-        const page = document.getElementById('page-' + pageId);
+<!--         if (page) { -->
+<!--             page.classList.add('active'); -->
+<!--         } -->
 
-        if (page) {
-            page.classList.add('active');
-        }
+<!--         document.querySelectorAll('[data-page="' + pageId + '"]').forEach(el => -->
+<!--             el.classList.add('active') -->
+<!--         ); -->
 
-        document.querySelectorAll('[data-page="' + pageId + '"]').forEach(el =>
-            el.classList.add('active')
-        );
+<!--         if (pageId === "team") { -->
+<!--             import("/src/pages/team.js").then(module => { -->
+<!--                 module.renderTeam(); -->
+<!--             }); -->
+<!--         } -->
 
-        if (pageId === "team") {
-            import("/src/pages/team.js").then(module => {
-                module.renderTeam();
-            });
-        }
+<!--         if (pageId === "howto") { -->
+<!--             import("/src/pages/howtouse.js").then(module => { -->
+<!--                 module.renderHowToUse(); -->
+<!--             }); -->
+<!--         } -->
 
-        if (pageId === "howto") {
-            import("/src/pages/howtouse.js").then(module => {
-                module.renderHowToUse();
-            });
-        }
+<!--         closeSidebar(); -->
+<!--     } -->
 
-        closeSidebar();
-    }
+<!--     document.querySelectorAll('[data-page]').forEach(el => { -->
+<!--         el.addEventListener('click', () => navigateTo(el.dataset.page)); -->
+<!--     }); -->
 
-    document.querySelectorAll('[data-page]').forEach(el => {
-        el.addEventListener('click', () => navigateTo(el.dataset.page));
-    });
+<!--     navigateTo('home'); -->
 
-    navigateTo('home');
-
-</script>
+<!-- </script> -->
 
 
 <!-- MOOD SCRIPT (Azamat) -->
-<script>
-    const moodInput = document.getElementById("moodInput");
-    const moodButtons = document.querySelectorAll(".moodBtn");
+<!-- <script> -->
+<!--     const moodInput = document.getElementById("moodInput"); -->
+<!--     const moodButtons = document.querySelectorAll(".moodBtn"); -->
 
-    /* Mood keyword dictionary */
-    const moodKeywords = {
-        happy: [ "happy", "great", "good", "awesome", "excited", "joy", "fun" ],
-        calm: [ "calm", "peaceful", "relaxed", "quiet", "chill" ],
-        sad: [ "sad", "down", "unhappy", "depressed", "lonely" ],
-        angry: [ "angry", "mad", "furious", "annoyed", "irritated" ],
-        anxious: [ "anxious", "worried", "stress", "nervous", "afraid" ]
-    };
+<!--     /* Mood keyword dictionary */ -->
+<!--     const moodKeywords = { -->
+<!--         happy: [ "happy", "great", "good", "awesome", "excited", "joy", "fun" ], -->
+<!--         calm: [ "calm", "peaceful", "relaxed", "quiet", "chill" ], -->
+<!--         sad: [ "sad", "down", "unhappy", "depressed", "lonely" ], -->
+<!--         angry: [ "angry", "mad", "furious", "annoyed", "irritated" ], -->
+<!--         anxious: [ "anxious", "worried", "stress", "nervous", "afraid" ] -->
+<!--     }; -->
 
 
-    /* Remove highlight from all buttons */
-    function clearMoodHighlight() {
-        moodButtons.forEach(btn => {
-            btn.classList.remove("ring-4", "ring-emerald-400", "bg-white/20");
-        });
-    }
+<!--     /* Remove highlight from all buttons */ -->
+<!--     function clearMoodHighlight() { -->
+<!--         moodButtons.forEach(btn => { -->
+<!--             btn.classList.remove("ring-4", "ring-emerald-400", "bg-white/20"); -->
+<!--         }); -->
+<!--     } -->
 
 
-    /* Highlight selected mood button */
-    function highlightMood(mood) {
+<!--     /* Highlight selected mood button */ -->
+<!--     function highlightMood(mood) { -->
 
-        clearMoodHighlight();
+<!--         clearMoodHighlight(); -->
 
-        const button = document.querySelector(
-            `.moodBtn[data-mood="${mood}"]`
-        );
+<!--         const button = document.querySelector( -->
+<!--             `.moodBtn[data-mood="${mood}"]` -->
+<!--         ); -->
 
-        if (button) {
-            button.classList.add(
-                "ring-4",
-                "ring-emerald-400",
-                "bg-white/20"
-            );
-        }
-    }
+<!--         if (button) { -->
+<!--             button.classList.add( -->
+<!--                 "ring-4", -->
+<!--                 "ring-emerald-400", -->
+<!--                 "bg-white/20" -->
+<!--             ); -->
+<!--         } -->
+<!--     } -->
 
 
-    /* Detect mood from text */
-    function detectMoodFromText() {
+<!--     /* Detect mood from text */ -->
+<!--     function detectMoodFromText() { -->
 
-        const text =
-            moodInput.value.toLowerCase();
+<!--         const text = -->
+<!--             moodInput.value.toLowerCase(); -->
 
-        if (text.includes("angry")) {
-            highlightMood("angry");
-            return;
-        }
+<!--         if (text.includes("angry")) { -->
+<!--             highlightMood("angry"); -->
+<!--             return; -->
+<!--         } -->
 
-        if (text.includes("sad")) {
-            highlightMood("sad");
-            return;
-        }
+<!--         if (text.includes("sad")) { -->
+<!--             highlightMood("sad"); -->
+<!--             return; -->
+<!--         } -->
 
-        if (text.includes("anxious")) {
-            highlightMood("anxious");
-            return;
-        }
+<!--         if (text.includes("anxious")) { -->
+<!--             highlightMood("anxious"); -->
+<!--             return; -->
+<!--         } -->
 
-        if (text.includes("calm")) {
-            highlightMood("calm");
-            return;
-        }
+<!--         if (text.includes("calm")) { -->
+<!--             highlightMood("calm"); -->
+<!--             return; -->
+<!--         } -->
 
-        if (text.includes("happy") || text.includes("good")) {
-            highlightMood("happy");
-            return;
-        }
+<!--         if (text.includes("happy") || text.includes("good")) { -->
+<!--             highlightMood("happy"); -->
+<!--             return; -->
+<!--         } -->
 
-        clearMoodHighlight();
+<!--         clearMoodHighlight(); -->
 
-    }
+<!--     } -->
 
 
-    /* Live detection while typing */
-    moodInput.addEventListener("input", detectMoodFromText);
-</script>
-<!--     <script src="storage.js"></script> -->
-<script type="module" src="/src/main.js"></script>
+<!--     /* Live detection while typing */ -->
+<!--     moodInput.addEventListener("input", detectMoodFromText); -->
+<!-- </script> -->
 
 
-<script>
 
-    const moodFlowers = {
+<!-- <script> -->
 
-        happy: "🌻",
-        calm: "🌸",
-        sad: "🥀",
-        angry: "🌹",
-        anxious: "🌾"
+<!--     const moodFlowers = { -->
 
-    };
+<!--         happy: "🌻", -->
+<!--         calm: "🌸", -->
+<!--         sad: "🥀", -->
+<!--         angry: "🌹", -->
+<!--         anxious: "🌾" -->
 
+<!--     }; -->
 
-    /* ---------- ADD TO HISTORY ---------- */
 
-    function addToHistory(mood, note, date) {
+<!--     /* &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; ADD TO HISTORY &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */ -->
 
-        const container =
-            document.getElementById("historyContainer");
+<!--     function addToHistory(mood, note, date) { -->
 
-        if (!container) return;
+<!--         const container = -->
+<!--             document.getElementById("historyContainer"); -->
 
+<!--         if (!container) return; -->
 
-        const flower =
-            moodFlowers[mood] || "🌱";
 
+<!--         const flower = -->
+<!--             moodFlowers[mood] || "🌱"; -->
 
-        const entry =
-            document.createElement("div");
 
-        entry.className =
-            "flex items-center gap-4 rounded-2xl bg-white/10 px-4 py-3 hover:bg-white/15 transition";
+<!--         const entry = -->
+<!--             document.createElement("div"); -->
 
+<!--         entry.className = -->
+<!--             "flex items-center gap-4 rounded-2xl bg-white/10 px-4 py-3 hover:bg-white/15 transition"; -->
 
-        entry.innerHTML = `
 
-    <span class="text-3xl">${flower}</span>
+<!--         entry.innerHTML = ` -->
 
-    <div class="flex-1">
+<!--     <span class="text-3xl">${flower}</span> -->
 
-    <p class="text-sm font-medium">
-    ${mood.charAt(0).toUpperCase() + mood.slice(1)}
-    </p>
+<!--     <div class="flex-1"> -->
 
-    <p class="text-xs text-white/50">
-    ${date} · "${note}"
-    </p>
+<!--     <p class="text-sm font-medium"> -->
+<!--     ${mood.charAt(0).toUpperCase() + mood.slice(1)} -->
+<!--     </p> -->
 
-    </div>
+<!--     <p class="text-xs text-white/50"> -->
+<!--     ${date} · "${note}" -->
+<!--     </p> -->
 
-    `;
+<!--     </div> -->
 
+<!--     `; -->
 
-        container.prepend(entry);
 
-    }
+<!--         container.prepend(entry); -->
 
+<!--     } -->
 
-    /* ---------- LOAD HISTORY ---------- */
 
-    function loadHistoryFromStorage() {
+<!--     /* &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; LOAD HISTORY &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */ -->
 
-        const container =
-            document.getElementById("historyContainer");
+<!--     function loadHistoryFromStorage() { -->
 
-        if (!container) return;
+<!--         const container = -->
+<!--             document.getElementById("historyContainer"); -->
 
-        let logs =
-            JSON.parse(localStorage.getItem("moodLogs")) || [];
+<!--         if (!container) return; -->
 
+<!--         let logs = -->
+<!--             JSON.parse(localStorage.getItem("moodLogs")) || []; -->
 
-        logs.forEach(entry => {
 
-            addToHistory(
-                entry.mood,
-                entry.note,
-                entry.date
-            );
+<!--         logs.forEach(entry => { -->
 
-        });
+<!--             addToHistory( -->
+<!--                 entry.mood, -->
+<!--                 entry.note, -->
+<!--                 entry.date -->
+<!--             ); -->
 
-    }
+<!--         }); -->
 
-    function getMoodFromText(note) {
+<!--     } -->
 
-        const text = note.toLowerCase();
+<!--     function getMoodFromText(note) { -->
 
-        if (text.includes("angry")) return "angry";
-        if (text.includes("sad")) return "sad";
-        if (text.includes("anxious")) return "anxious";
-        if (text.includes("calm")) return "calm";
-        if (text.includes("happy") || text.includes("good")) return "happy";
+<!--         const text = note.toLowerCase(); -->
 
-        return null;
+<!--         if (text.includes("angry")) return "angry"; -->
+<!--         if (text.includes("sad")) return "sad"; -->
+<!--         if (text.includes("anxious")) return "anxious"; -->
+<!--         if (text.includes("calm")) return "calm"; -->
+<!--         if (text.includes("happy") || text.includes("good")) return "happy"; -->
 
-    }
+<!--         return null; -->
 
-    /* ---------- SUBMIT BUTTON ---------- */
+<!--     } -->
 
-    document.getElementById("submitMoodBtn")
-        .addEventListener("click", function () {
+<!--     /* &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; SUBMIT BUTTON &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */ -->
 
-            const note = moodInput.value;
+<!--     document.getElementById("submitMoodBtn") -->
+<!--         .addEventListener("click", function () { -->
 
-            /* Detect mood directly */
-            let mood = getMoodFromText(note);
+<!--             const note = moodInput.value; -->
 
-            if (!mood) {
+<!--             /* Detect mood directly */ -->
+<!--             let mood = getMoodFromText(note); -->
 
-                document.getElementById("logError").innerText =
-                    "Type a mood like sad, angry, calm or happy.";
+<!--             if (!mood) { -->
 
-                return;
+<!--                 document.getElementById("logError").innerText = -->
+<!--                     "Type a mood like sad, angry, calm or happy."; -->
 
-            }
+<!--                 return; -->
 
-            const success =
-                saveMood(mood, note);
+<!--             } -->
 
-            if (!success) {
+<!--             const success = -->
+<!--                 saveMood(mood, note); -->
 
-                document.getElementById("logError").innerText =
-                    "You already logged mood today.";
+<!--             if (!success) { -->
 
-                return;
-            }
+<!--                 document.getElementById("logError").innerText = -->
+<!--                     "You already logged mood today."; -->
 
-            const today =
-                new Date().toDateString();
+<!--                 return; -->
+<!--             } -->
 
+<!--             const today = -->
+<!--                 new Date().toDateString(); -->
 
-            /* Confirmation */
 
-            document.getElementById("confirmationCard")
-                .classList.remove("hidden");
+<!--             /* Confirmation */ -->
 
-            document.getElementById("confirmMood")
-                .innerText = "Mood: " + mood;
+<!--             document.getElementById("confirmationCard") -->
+<!--                 .classList.remove("hidden"); -->
 
-            document.getElementById("confirmDate")
-                .innerText = "Date: " + today;
+<!--             document.getElementById("confirmMood") -->
+<!--                 .innerText = "Mood: " + mood; -->
 
+<!--             document.getElementById("confirmDate") -->
+<!--                 .innerText = "Date: " + today; -->
 
-            /* History */
 
-            addToHistory(mood, note, today);
+<!--             /* History */ -->
 
-        });
+<!--             addToHistory(mood, note, today); -->
 
-    /* ---------- RETURN HOME ---------- */
+<!--         }); -->
 
-    document.getElementById("backHomeBtn")
-        .addEventListener("click", function () {
+<!--     /* &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; RETURN HOME &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */ -->
 
-            navigateTo("home");
+<!--     document.getElementById("backHomeBtn") -->
+<!--         .addEventListener("click", function () { -->
 
-        });
+<!--             navigateTo("home"); -->
 
+<!--         }); -->
 
-    /* ---------- LOAD HISTORY WHEN OPEN ---------- */
 
-    const oldNavigate = navigateTo;
+<!--     /* &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; LOAD HISTORY WHEN OPEN &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; */ -->
 
-    navigateTo = function (pageId) {
+<!--     const oldNavigate = navigateTo; -->
 
-        oldNavigate(pageId);
+<!--     navigateTo = function (pageId) { -->
 
-        if (pageId === "history") {
+<!--         oldNavigate(pageId); -->
 
-            loadHistoryFromStorage();
+<!--         if (pageId === "history") { -->
 
-        }
+<!--             loadHistoryFromStorage(); -->
 
-    }
+<!--         } -->
 
-</script>
+<!--     } -->
+
+<!-- </script> -->
 </body>
 
 </html>
