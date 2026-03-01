@@ -1,7 +1,7 @@
 # 🌱 Mood Garden
 
 **Live Demo:**  
-https://mood-garden-nsy9ocd0g-colm-woods-projects.vercel.app/
+[Mood Garden](https://mood-garden-beta.vercel.app/)
 
 Mood Garden is a calming mood-tracking web application built during a 4-day MVP sprint.  
 Users can log daily emotions using expressive flower icons, explore mood trends, and reflect on their emotional journey through a clean, responsive interface.
