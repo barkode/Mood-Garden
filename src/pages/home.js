@@ -1,3 +1,5 @@
+import {getGardenHTML} from "./garden.js";
+
 export function renderHomePage() {
     const container = document.getElementById("page-home");
     if (!container) return;
@@ -30,13 +32,7 @@ export function renderHomePage() {
                         <div class="rounded-2xl bg-white/5 p-4 border border-white/10">
                             <p class="text-sm font-medium mb-2">🌱 This week's streak</p>
                             <div class="flex gap-2">
-                                <span class="text-2xl" title="Mon">🌸</span>
-                                <span class="text-2xl" title="Tue">🌼</span>
-                                <span class="text-2xl" title="Wed">🌻</span>
-                                <span class="text-2xl" title="Thu">🌷</span>
-                                <span class="text-2xl opacity-30" title="Fri">🌱</span>
-                                <span class="text-2xl opacity-30" title="Sat">🌱</span>
-                                <span class="text-2xl opacity-30" title="Sun">🌱</span>
+                                ${getGardenHTML(7)}
                             </div>
                         </div>`;
 }
