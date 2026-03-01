@@ -1,10 +1,36 @@
 import { COLORS, FLOWERS } from "../scripts/constants.js";
 import { moodStorage } from "../storage.js";
 
+function calculateStreak(logs) {
+    if (logs.length === 0) return 0;
+
+    // Get unique dates in timestamp format for comparison
+    const dates = [...new Set(logs.map(l => new Date(l.date).setHours(0,0,0,0)))]
+        .sort((a, b) => b - a); // Від новіших до старіших
+
+    let streak = 0;
+    let today = new Date().setHours(0,0,0,0);
+    let yesterday = today - 86400000;
+
+    // If the last entry is not today or yesterday, the streak is interrupted.
+    if (dates[0] < yesterday) return 0;
+
+    let currentCheck = dates[0];
+    for (let i = 0; i < dates.length; i++) {
+        if (i === 0 || dates[i] === currentCheck - 86400000) {
+            streak++;
+            currentCheck = dates[i];
+        } else {
+            break;
+        }
+    }
+    return streak;
+}
 
 export function renderAnalytics() {
 
     const items = moodStorage.getHistory();
+    const streak = calculateStreak(items);
     const total = items.length;
 
     const counts = Object.fromEntries(Object.keys(FLOWERS).map(m => [ m, 0 ]));
@@ -29,7 +55,7 @@ export function renderAnalytics() {
                             </div>
                             <div class="rounded-2xl bg-white/10 p-4 text-center">
                                 <div class="text-3xl mb-1">🔥</div>
-                                <div class="text-2xl font-bold">12</div>
+                                <div class="text-2xl font-bold">${streak}</div>
                                 <div class="text-xs text-white/60 mt-1">Day streak</div>
                             </div>
                             <div class="rounded-2xl bg-white/10 p-4 text-center">
