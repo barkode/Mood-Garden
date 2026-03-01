@@ -14,7 +14,7 @@ renderHistory();
 renderTeam();
 renderHowToUse();
 renderGarden();
-// renderAnalytics();
+renderAnalytics();
 
 const sidebar = document.getElementById('sidebar');
 
