@@ -13,17 +13,10 @@ const createInitialState = () => {
     const now = new Date().toISOString();
     return {
         meta: {
-            version: CURRENT_VERSION,
-            createdAt: now,
-            updatedAt: now,
-        },
-        userSettings: {
-            theme: 'system',
-            language: 'uk',
-            userName: 'User',
-            notifications: true
-        },
-        history: [] // Array of objects { date: 'YYYY-MM-DD', mood: string, note: string, timestamp: string }
+            version: CURRENT_VERSION, createdAt: now, updatedAt: now,
+        }, userSettings: {
+            theme: 'system', language: 'uk', userName: 'User', notifications: true
+        }, history: [] // Array of objects { date: 'YYYY-MM-DD', mood: string, note: string, timestamp: string }
     };
 };
 
@@ -58,8 +51,7 @@ const io = {
         } catch (e) {
             console.error('Storage Error: Не вдалося зберегти дані (можливо, вичерпано ліміт)', e);
         }
-    },
-    load: () => {
+    }, load: () => {
         try {
             const raw = window.localStorage.getItem(STORAGE_KEY);
             return raw ? JSON.parse(raw) : null;
@@ -70,10 +62,15 @@ const io = {
     }
 };
 
+const formatDate = (date) => {
+    const d = new Date(date);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 /**
  * Public API
  */
-export const MoodStorage = {
+export const moodStorage = {
     // Cache data in memory for fast access
     _state: null,
 
@@ -118,10 +115,7 @@ export const MoodStorage = {
         const timestamp = new Date().toISOString();
 
         const newEntry = {
-            date: targetDate,
-            mood,
-            note,
-            updatedAt: timestamp
+            date: targetDate, mood, note, updatedAt: timestamp
         };
 
         // We update the history: if the date already exists - replace it, if not - add it
@@ -132,8 +126,9 @@ export const MoodStorage = {
         } else {
             this._state.history.push(newEntry);
             // Sort history by date (newest to oldest)
-            this._state.history.sort((a, b) => b.date.localeCompare(a.date));
         }
+
+        this._state.history.sort((a, b) => b.date.localeCompare(a.date));
 
         this._persist();
         return newEntry;
@@ -175,4 +170,16 @@ export const MoodStorage = {
             window.location.reload();
         }
     }
+};
+
+export const storage = {
+    init:              () => moodStorage.init(),
+    getSettings:       () => moodStorage.getSettings(),
+    updateSettings: (patch) => moodStorage.updateSettings(patch),
+    saveEntry:       (entry) => moodStorage.saveEntry(entry),
+    getEntryByDate:   (date) => moodStorage.getEntryByDate(date),
+    getHistory:        () => moodStorage.getHistory(),
+    deleteEntry:       (date) => moodStorage.deleteEntry(date),
+    clearAll:          () => moodStorage.clearAll(),
+    formatDate:        (date) => formatDate(date),
 };

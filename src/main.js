@@ -1,37 +1,117 @@
+import { moodStorage } from '/src/storage.js'
 import './styles/main.css';
 
 import { renderAnalytics } from './pages/analytics.js';
-import { renderGarden } from './pages/garden.js';
+import { renderGardenPage } from './pages/garden.js';
+import { renderHistoryPage } from './pages/history.js';
+import { renderHomePage } from "./pages/home.js";
+import { renderMoodPage } from "./pages/mood.js";
 
-import { renderTeam } from "./pages/team.js"
 
-const routes = {
-    '/garden': renderGarden,
-    '/analytics': renderAnalytics,
-    '/team': renderTeam
+moodStorage.init();
+
+const lazyPages = {
+    team: () => import('./pages/team.js').then(m => m.renderTeamPage()),
+    howto: () => import('./pages/howtouse.js').then(m => m.renderHowToUsePage()),
+};
+
+renderHistoryPage();
+// renderTeamPage();
+// renderHowToUsePage();
+renderGardenPage();
+renderAnalytics();
+renderHomePage();
+renderMoodPage();
+
+const sidebar = document.getElementById('sidebar');
+
+function openSidebar() {
+    sidebar.classList.remove('hidden');
+    sidebar.classList.add('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90');
 }
 
-function router() {
-  const path = location.hash.replace('#', '');
-
-  if (!path) return; // Stay on index.html main layout
-
-  const page = routes[path];
-
-  if (!page) return;
-
-  const app = document.getElementById('app');
-  app.innerHTML = '';
-  page();
+function closeSidebar() {
+    const isLg = window.innerWidth >= 1024;
+    if (!isLg) {
+        sidebar.classList.add('hidden');
+        sidebar.classList.remove('flex', 'absolute', 'inset-y-0', 'left-0', 'bg-black/90');
+    }
 }
 
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+document.getElementById('mobile-open-btn').addEventListener('click', openSidebar);
+document.getElementById('mobile-open-btn2').addEventListener('click', openSidebar);
+document.getElementById('sidebar-close-btn').addEventListener('click', closeSidebar);
 
-window.addEventListener('DOMContentLoaded', () => {
-  const teamBtn = document.getElementById('teamBtn');
-  const howToUseBtn = document.getElementById('howToUseBtn');
+export function navigateTo(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
-  if (teamBtn) teamBtn.onclick = showTeamModal;
-  if (howToUseBtn) howToUseBtn.onclick = showHowToUseModal;
+    const page = document.getElementById('page-' + pageId);
+
+    if (page) {
+        page.classList.add('active');
+    }
+
+    document.querySelectorAll('[data-page="' + pageId + '"]').forEach(el =>
+        el.classList.add('active')
+    );
+
+    // Lazy-load the team and how-to-use pages only when the user navigates to them
+    if (lazyPages[pageId]) {
+        lazyPages[pageId]();
+        delete lazyPages[pageId]; // Download the module only once
+    }
+
+    // if (pageId === "team") {
+    //     import("/src/pages/team.js").then(module => {
+    //         module.renderTeam();
+    //     });
+    // }
+    //
+    // if (pageId === "howto") {
+    //     import("/src/pages/howtouse.js").then(module => {
+    //         module.renderHowToUse();
+    //     });
+    // }
+
+    closeSidebar();
+}
+
+document.querySelectorAll('[data-page]').forEach(el => {
+    el.addEventListener('click', () => navigateTo(el.dataset.page));
 });
+
+navigateTo('home');
+
+// const routes = {
+//     '/garden': renderGarden,
+//     '/analytics': renderAnalytics,
+//     '/team': renderTeam,
+//     '/history': renderHistory
+// }
+//
+//
+// function router() {
+//   const path = location.hash.replace('#', '');
+//
+//   if (!path) return; // Stay on index.html main layout
+//
+//   const page = routes[path];
+//
+//   if (!page) return;
+//
+//   const app = document.getElementById('app');
+//   app.innerHTML = '';
+//   page();
+// }
+//
+// window.addEventListener('hashchange', router);
+// window.addEventListener('load', router);
+//
+// window.addEventListener('DOMContentLoaded', () => {
+//   const teamBtn = document.getElementById('teamBtn');
+//   const howToUseBtn = document.getElementById('howToUseBtn');
+//
+//   if (teamBtn) teamBtn.onclick = showTeamModal;
+//   if (howToUseBtn) howToUseBtn.onclick = showHowToUseModal;
+// });
