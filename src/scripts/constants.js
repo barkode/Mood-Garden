@@ -7,3 +7,11 @@ export const COLORS = {
 };
 
 export const FLOWERS = {happy: '🌻', calm: '🌸', sad: '🥀', angry: '🌹', anxious: '🌾'};
+
+export const KEYWORDS = {
+    angry: [ 'angry', 'mad', 'furious', 'annoyed' ],
+    sad: [ 'sad', 'down', 'unhappy', 'depressed' ],
+    anxious: [ 'anxious', 'worried', 'stress', 'nervous' ],
+    calm: [ 'calm', 'peaceful', 'relaxed', 'quiet' ],
+    happy: [ 'happy', 'great', 'good', 'awesome', 'joy' ],
+};
