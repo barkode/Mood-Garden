@@ -95,13 +95,26 @@
                     </svg>
                 </button>
                 <button data-page="history"
-                    class="quick-nav group flex items-center justify-center rounded-xl px-3 py-2.5 mt-4 transition hover:bg-white/5 active:scale-95"
+                    class="quick-nav group flex items-center justify-center rounded-xl px-3 py-2.5 transition hover:bg-white/5 active:scale-95"
                     title="History">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 opacity-50 group-hover:opacity-100 transition">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
+                </button>
+                <!-- TEAM -->
+                <button data-page="team"
+                    class="quick-nav group flex items-center justify-center rounded-xl px-3 py-2.5 transition hover:bg-white/5 active:scale-95"
+                    title="Team">
+                    <i class="fas fa-users opacity-50 group-hover:opacity-100 transition"></i>
+                </button>
+
+                <!-- HOW TO USE -->
+                <button data-page="howto"
+                    class="quick-nav group flex items-center justify-center rounded-xl px-3 py-2.5 transition hover:bg-white/5 active:scale-95"
+                    title="How To Use">
+                    <i class="fas fa-question-circle opacity-50 group-hover:opacity-100 transition"></i>
                 </button>
             </nav>
 
@@ -319,10 +332,9 @@
 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 
 focus:ring-white/20 resize-none"></textarea>
 
-                             <button id="submitMoodBtn"
-                            class="rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3
+                            <button id="submitMoodBtn" class="rounded-xl bg-emerald-500 hover:bg-emerald-600 px-6 py-3
                             font-medium transition mt-2">
-                            Submit Mood 🌱
+                                Submit Mood 🌱
                             </button>
 
 
@@ -337,15 +349,15 @@ focus:ring-white/20 resize-none"></textarea>
                                 class="hidden rounded-2xl bg-white/10 border border-white/20 p-5 mt-4">
 
                                 <h3 class="text-lg font-semibold mb-2">
-                                Mood Saved 🌱
+                                    Mood Saved 🌱
                                 </h3>
 
                                 <p id="confirmMood"></p>
                                 <p id="confirmDate"></p>
 
                                 <button id="backHomeBtn"
-                                class="mt-4 rounded-xl bg-white/20 px-4 py-2 hover:bg-white/30">
-                                Return Home
+                                    class="mt-4 rounded-xl bg-white/20 px-4 py-2 hover:bg-white/30">
+                                    Return Home
                                 </button>
 
                             </div>
@@ -612,40 +624,40 @@ focus:ring-white/20 resize-none"></textarea>
 
 
         /* Detect mood from text */
-      function detectMoodFromText() {
+        function detectMoodFromText() {
 
-    const text =
-    moodInput.value.toLowerCase();
+            const text =
+                moodInput.value.toLowerCase();
 
-    if (text.includes("angry")) {
-        highlightMood("angry");
-        return;
-    }
+            if (text.includes("angry")) {
+                highlightMood("angry");
+                return;
+            }
 
-    if (text.includes("sad")) {
-        highlightMood("sad");
-        return;
-    }
+            if (text.includes("sad")) {
+                highlightMood("sad");
+                return;
+            }
 
-    if (text.includes("anxious")) {
-        highlightMood("anxious");
-        return;
-    }
+            if (text.includes("anxious")) {
+                highlightMood("anxious");
+                return;
+            }
 
-    if (text.includes("calm")) {
-        highlightMood("calm");
-        return;
-    }
+            if (text.includes("calm")) {
+                highlightMood("calm");
+                return;
+            }
 
-    if (text.includes("happy") || text.includes("good")) {
-        highlightMood("happy");
-        return;
-    }
+            if (text.includes("happy") || text.includes("good")) {
+                highlightMood("happy");
+                return;
+            }
 
-    clearMoodHighlight();
+            clearMoodHighlight();
 
-}
-    
+        }
+
 
 
         /* Live detection while typing */
@@ -657,39 +669,39 @@ focus:ring-white/20 resize-none"></textarea>
 
     <script>
 
-const moodFlowers = {
+        const moodFlowers = {
 
-    happy: "🌻",
-    calm: "🌸",
-    sad: "🥀",
-    angry: "🌹",
-    anxious: "🌾"
+            happy: "🌻",
+            calm: "🌸",
+            sad: "🥀",
+            angry: "🌹",
+            anxious: "🌾"
 
-};
-
-
-/* ---------- ADD TO HISTORY ---------- */
-
-function addToHistory(mood, note, date) {
-
-    const container =
-    document.getElementById("historyContainer");
-
-    if(!container) return;
+        };
 
 
-    const flower =
-    moodFlowers[mood] || "🌱";
+        /* ---------- ADD TO HISTORY ---------- */
+
+        function addToHistory(mood, note, date) {
+
+            const container =
+                document.getElementById("historyContainer");
+
+            if (!container) return;
 
 
-    const entry =
-    document.createElement("div");
-
-    entry.className =
-    "flex items-center gap-4 rounded-2xl bg-white/10 px-4 py-3 hover:bg-white/15 transition";
+            const flower =
+                moodFlowers[mood] || "🌱";
 
 
-    entry.innerHTML = `
+            const entry =
+                document.createElement("div");
+
+            entry.className =
+                "flex items-center gap-4 rounded-2xl bg-white/10 px-4 py-3 hover:bg-white/15 transition";
+
+
+            entry.innerHTML = `
 
     <span class="text-3xl">${flower}</span>
 
@@ -708,128 +720,128 @@ function addToHistory(mood, note, date) {
     `;
 
 
-    container.prepend(entry);
+            container.prepend(entry);
 
-}
-
-
-/* ---------- LOAD HISTORY ---------- */
-
-function loadHistoryFromStorage() {
-
-    const container =
-    document.getElementById("historyContainer");
-
-    if (!container) return;
-
-    let logs =
-    JSON.parse(localStorage.getItem("moodLogs")) || [];
+        }
 
 
-    logs.forEach(entry => {
+        /* ---------- LOAD HISTORY ---------- */
 
-        addToHistory(
-            entry.mood,
-            entry.note,
-            entry.date
-        );
+        function loadHistoryFromStorage() {
 
-    });
+            const container =
+                document.getElementById("historyContainer");
 
-}
+            if (!container) return;
 
-function getMoodFromText(note) {
-
-    const text = note.toLowerCase();
-
-    if (text.includes("angry")) return "angry";
-    if (text.includes("sad")) return "sad";
-    if (text.includes("anxious")) return "anxious";
-    if (text.includes("calm")) return "calm";
-    if (text.includes("happy") || text.includes("good")) return "happy";
-
-    return null;
-
-}
-/* ---------- SUBMIT BUTTON ---------- */
-
-    document.getElementById("submitMoodBtn")
-.addEventListener("click", function() {
-
-    const note = moodInput.value;
-
-    /* Detect mood directly */
-    let mood = getMoodFromText(note);
-
-    if (!mood) {
-
-        document.getElementById("logError").innerText =
-        "Type a mood like sad, angry, calm or happy.";
-
-        return;
-
-    }
-
-    const success =
-    saveMood(mood, note);
-
-    if (!success) {
-
-        document.getElementById("logError").innerText =
-        "You already logged mood today.";
-
-        return;
-    }
-
-    const today =
-    new Date().toDateString();
+            let logs =
+                JSON.parse(localStorage.getItem("moodLogs")) || [];
 
 
-    /* Confirmation */
+            logs.forEach(entry => {
 
-    document.getElementById("confirmationCard")
-    .classList.remove("hidden");
+                addToHistory(
+                    entry.mood,
+                    entry.note,
+                    entry.date
+                );
 
-    document.getElementById("confirmMood")
-    .innerText = "Mood: " + mood;
+            });
 
-    document.getElementById("confirmDate")
-    .innerText = "Date: " + today;
+        }
+
+        function getMoodFromText(note) {
+
+            const text = note.toLowerCase();
+
+            if (text.includes("angry")) return "angry";
+            if (text.includes("sad")) return "sad";
+            if (text.includes("anxious")) return "anxious";
+            if (text.includes("calm")) return "calm";
+            if (text.includes("happy") || text.includes("good")) return "happy";
+
+            return null;
+
+        }
+        /* ---------- SUBMIT BUTTON ---------- */
+
+        document.getElementById("submitMoodBtn")
+            .addEventListener("click", function () {
+
+                const note = moodInput.value;
+
+                /* Detect mood directly */
+                let mood = getMoodFromText(note);
+
+                if (!mood) {
+
+                    document.getElementById("logError").innerText =
+                        "Type a mood like sad, angry, calm or happy.";
+
+                    return;
+
+                }
+
+                const success =
+                    saveMood(mood, note);
+
+                if (!success) {
+
+                    document.getElementById("logError").innerText =
+                        "You already logged mood today.";
+
+                    return;
+                }
+
+                const today =
+                    new Date().toDateString();
 
 
-    /* History */
+                /* Confirmation */
 
-    addToHistory(mood, note, today);
+                document.getElementById("confirmationCard")
+                    .classList.remove("hidden");
 
-});
+                document.getElementById("confirmMood")
+                    .innerText = "Mood: " + mood;
 
-/* ---------- RETURN HOME ---------- */
-
-document.getElementById("backHomeBtn")
-.addEventListener("click", function(){
-
-navigateTo("home");
-
-});
+                document.getElementById("confirmDate")
+                    .innerText = "Date: " + today;
 
 
-/* ---------- LOAD HISTORY WHEN OPEN ---------- */
+                /* History */
 
-const oldNavigate = navigateTo;
+                addToHistory(mood, note, today);
 
-navigateTo = function(pageId){
+            });
 
-    oldNavigate(pageId);
+        /* ---------- RETURN HOME ---------- */
 
-    if(pageId === "history"){
+        document.getElementById("backHomeBtn")
+            .addEventListener("click", function () {
 
-        loadHistoryFromStorage();
+                navigateTo("home");
 
-    }
+            });
 
-}
 
-</script>
+        /* ---------- LOAD HISTORY WHEN OPEN ---------- */
+
+        const oldNavigate = navigateTo;
+
+        navigateTo = function (pageId) {
+
+            oldNavigate(pageId);
+
+            if (pageId === "history") {
+
+                loadHistoryFromStorage();
+
+            }
+
+        }
+
+    </script>
 </body>
 
 </html>
