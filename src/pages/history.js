@@ -13,8 +13,9 @@ export function renderHistory() {
             </div>
         </div>
     `).join('') || '<p class="text-white/40 text-sm">There are no entries yet.</p>';
-
-    document.getElementById('page-history').innerHTML = `
+    const container = document.getElementById("page-history");
+    if (!container) return;
+    container.innerHTML = `
         <div>
             <h2 class="text-xl font-semibold">History 🕰️</h2>
             <p class="text-sm text-white/60 mt-1">All your past mood entries</p>
