@@ -1,7 +1,7 @@
 export function renderAnalytics() {
     const container = document.getElementById("page-analytics");
     if (!container) return;
-    container.getElementById('page-analytics').innerHTML = `
+    container.innerHTML = `
     <div>
                             <h2 class="text-xl font-semibold">Analytics 📊</h2>
                             <p class="text-sm text-white/60 mt-1">Your mood patterns over time</p>
