@@ -37,17 +37,30 @@ Users can log daily emotions using expressive flower icons, explore mood trends,
 
 ## 📱 Mobile Experience
 
-### 📱 Home (Mobile)
-![Mobile Home Screenshot](./screenshots/mobile-home.png)
+Device: 375 x 824
+Zoom: 100%
 
-### 📊 Analytics (Mobile)
-![Mobile Analytics Screenshot](./screenshots/mobile-analytics.png)
+### 🏠 Home
+![Home Screenshot](./screenshots/mobile-home.png)
 
-### 👥 Team (Mobile)
-![Mobile Team Screenshot](./screenshots/mobile-team.png)
+### 🌸 Log Mood
+![Log Mood Screenshot](./screenshots/mobile-log-mood.png)
 
-### ❓ How To Use (Mobile)
-![Mobile How To Use Screenshot](./screenshots/mobile-how-to-use.png)
+### 🌿 Garden
+![Garden Screenshot](./screenshots/mobile-garden.png)
+
+### 📊 Analytics
+![Analytics Screenshot](./screenshots/mobile-analytics.png)
+
+### 🕰️ History
+![History Screenshot](./screenshots/mobile-history.png)
+
+### 👥 Team
+![Team Screenshot](./screenshots/mobile-team.png)
+
+### ❓ How To Use
+![How To Use Screenshot](./screenshots/mobile-how-to-use.png)
+
 
 ---
 
