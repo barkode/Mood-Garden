@@ -6,6 +6,7 @@ import { renderGarden } from './pages/garden.js';
 import { renderTeam } from "./pages/team.js"
 import { renderHistory } from './pages/history.js';
 import { renderHowToUse } from './pages/howtouse.js';
+import { renderHome } from "./pages/home.js";
 
 
 moodStorage.init();
@@ -15,6 +16,7 @@ renderTeam();
 renderHowToUse();
 renderGarden();
 renderAnalytics();
+renderHome();
 
 const sidebar = document.getElementById('sidebar');
 
