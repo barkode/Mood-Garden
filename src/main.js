@@ -1,16 +1,20 @@
+import { moodStorage } from '/src/storage.js'
 import './styles/main.css';
 
 import { renderAnalytics } from './pages/analytics.js';
 import { renderGarden } from './pages/garden.js';
-
 import { renderTeam } from "./pages/team.js"
 import { renderHistory } from './pages/history.js';
+import { renderHowToUse } from './pages/howtouse.js';
 
-import {moodStorage} from '/src/storage.js'
 
 moodStorage.init();
 
-renderHistory()
+renderHistory();
+renderTeam();
+renderHowToUse();
+renderGarden();
+// renderAnalytics();
 
 const sidebar = document.getElementById('sidebar');
 
