@@ -1,13 +1,15 @@
+import { navigateTo } from "../main.js";
 import { FLOWERS, KEYWORDS } from "../scripts/constants.js";
 import { moodStorage } from "../storage.js";
-import {navigateTo} from "../main.js";
+import { renderAnalytics } from "./analytics.js";
+import { renderGardenPage } from "./garden.js";
+import { renderHistoryPage } from "./history.js";
 
 
 function detectMood(text) {
     const t = text.toLowerCase();
     return Object.keys(KEYWORDS).find(mood => KEYWORDS[mood].some(w => t.includes(w))) || null;
 }
-
 
 
 export function renderMoodPage() {
@@ -74,7 +76,7 @@ focus:ring-white/20 resize-none"></textarea>
     document.querySelectorAll('.moodBtn').forEach(btn => {
         btn.addEventListener('click', () => {
             selectedMood = btn.dataset.mood;
-            document.querySelectorAll('.moodBtn').forEach(b => b.classList.remove('ring-4','ring-emerald-400'));
+            document.querySelectorAll('.moodBtn').forEach(b => b.classList.remove('ring-4', 'ring-emerald-400'));
             btn.classList.add('ring-4', 'ring-emerald-400');
         });
     });
@@ -83,20 +85,30 @@ focus:ring-white/20 resize-none"></textarea>
         const detected = detectMood(e.target.value);
         if (detected) {
             selectedMood = detected;
-            document.querySelectorAll('.moodBtn').forEach(b => b.classList.remove('ring-4','ring-emerald-400'));
-            document.querySelector(`.moodBtn[data-mood="${detected}"]`)?.classList.add('ring-4','ring-emerald-400');
+            document.querySelectorAll('.moodBtn').forEach(b => b.classList.remove('ring-4', 'ring-emerald-400'));
+            document.querySelector(`.moodBtn[data-mood="${detected}"]`)?.classList.add('ring-4', 'ring-emerald-400');
         }
     });
 
     document.getElementById('submitMoodBtn').addEventListener('click', () => {
         const note = document.getElementById('moodInput').value.trim();
         const mood = selectedMood || detectMood(note);
-        const err  = document.getElementById('logError');
+        const err = document.getElementById('logError');
 
-        if (!mood) { err.textContent = 'Choose a mood or write about it.'; return; }
+        if (!mood) {
+            err.textContent = 'Choose a mood or write about it.';
+            return;
+        }
 
         const ok = moodStorage.saveEntry({mood, note});
-        if (!ok) { err.textContent = 'You\'ve already kept your spirits up today.'; return; }
+        if (!ok) {
+            err.textContent = 'You\'ve already kept your spirits up today.';
+            return;
+        } else {
+            renderAnalytics();
+            renderHistoryPage();
+            renderGardenPage();
+        }
 
         err.textContent = '';
         document.getElementById('confirmMood').textContent = 'Mood: ' + mood;
@@ -105,7 +117,6 @@ focus:ring-white/20 resize-none"></textarea>
     });
 
     document.getElementById('backHomeBtn').addEventListener('click', () => navigateTo('home'));
-
 
 
 }
